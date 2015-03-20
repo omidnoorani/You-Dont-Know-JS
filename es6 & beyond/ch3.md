@@ -11,7 +11,7 @@ What ES6 has done is introduce an implicit standardized interface for iterators.
 
 Iterators are a way of organizing ordered, sequential, pull-based consumption of data.
 
-For example, you may implement a utility that produces a new unique identifier each time it's requested. Or you may produce an infinite series of values that rotate through a fixed list, in round-robbin fashion. Or you could attach an iterator to a database query result to pull out new rows one at a time.
+For example, you may implement a utility that produces a new unique identifier each time it's requested. Or you may produce an infinite series of values that rotate through a fixed list, in round-robin fashion. Or you could attach an iterator to a database query result to pull out new rows one at a time.
 
 Though not as common a usage of iterators to this point in JS, iterators can also be thought of as controlling behavior one step at a time. This can be illustrated quite clearly when considering generators (see "Generators" later in this chapter), though you can certainly do the same without generators.
 
@@ -1523,6 +1523,8 @@ import bar from "bar";
 foo( 25 );				// 11
 bar( 25 );				// 11.5
 ```
+
+The static loading semantics of the `import` statement mean that a `"foo"` and `"bar"` which mutually depend on each other via `import` will ensure that both are loaded, parsed, and compiled before either of them runs. So their circular dependency is statically resolved and this work as you'd expect.
 
 ### Module Loader
 
